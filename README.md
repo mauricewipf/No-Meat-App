@@ -15,6 +15,8 @@
 
 - Created with [Yeoman](yeoman.io)
 - Angular 1.x
+- [angular-ui-calendar](https://angular-ui.github.io/ui-calendar/)
+  - https://fullcalendar.io/docs/
 - Ionic
 
 ###Backend

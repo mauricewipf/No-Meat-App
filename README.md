@@ -6,16 +6,19 @@
 - HTML + CSS + JavaScript
 - AngularJS
 - Cordova
-- NodeJS + Express
+- NodeJS
 - MongoDB
 
 
 
 ###Frontend
 
+- Created with [Yeoman](yeoman.io)
 - Angular 1.x
 - Ionic
 
 ###Backend
 
 - Created with [Strongloop](https://strongloop.com/)
+- NodeJS
+- MongoDB

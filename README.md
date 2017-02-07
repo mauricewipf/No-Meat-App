@@ -17,6 +17,8 @@
 - Angular 1.x
 - [angular-ui-calendar](https://angular-ui.github.io/ui-calendar/)
   - https://fullcalendar.io/docs/
+- [json-server](https://github.com/typicode/json-server) for testing
+  - `cd frontend/json-server && json-server db.json`
 - Ionic
 
 ###Backend

@@ -8,48 +8,58 @@
  * Controller of the frontendApp
  */
 angular.module('frontendApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', ['$scope', 'calendarFactory', function ($scope, calendarFactory) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
 
-    /* dates */
-    var date = new Date();
-    var d = date.getDate();
-    var m = date.getMonth();
-    var y = date.getFullYear();
+    // var date = new Date();
+    // var d = date.getDate();
+    // var m = date.getMonth();
+    // var y = date.getFullYear();
+    // $scope.days = [
+    //   {id:1000, title: 'NoMeatEaten',start: '2017-02-22', allDay:true},
+    //   {id:1001, title: 'All Day Event',start: new Date(y, m, 1)},
+    //   {id:1002, title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
+    //   {id:1003, title: 'Repeating Event',start: new Date(y, m, d - 3, 16, 0),allDay: false}
+    // ];
 
-    $scope.events = [
-      {id:1000, title: 'NoMeatEaten',start: new Date(), allDay:true},
-      {id:1001, title: 'All Day Event',start: new Date(y, m, 1)},
-      {id:1002, title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
-      {id:1003, title: 'Repeating Event',start: new Date(y, m, d - 3, 16, 0),allDay: false}
-    ];
+    calendarFactory.query(
+        function(response) {
+            console.log(JSON.parse(angular.toJson(response)));
+            $scope.days = JSON.parse(angular.toJson(response));
+        },
+        function(response) {
+            console.log('Error: ', response);
+            $scope.message = 'Error: ' + response.status + ' ' + response.statusText;
+        }
+    );
 
-    $scope.eventSources = [$scope.events];
+    $scope.eventSources = [$scope.days];
 
-    /* add custom event*/
-    $scope.addEvent = function(date) {
-      $scope.events.push({
+    /* add day*/
+    $scope.addDay = function(date) {
+      $scope.days.push({
         title: 'NoMeatEaten',
         start: date._d,
-        addDay:true
+        allDay:true
       });
       // console.log(date._d + ' added');
+      console.log($scope.days);
     };
 
-    /* remove event */
-    $scope.removeEvent = function(index) {
-      for (var i=0; i < $scope.events.length; i++) {
-        if ($scope.events[i]._id === index._id) {
-          $scope.events.splice(i,1);
+    /* remove day */
+    $scope.removeDay = function(index) {
+      for (var i=0; i < $scope.days.length; i++) {
+        if ($scope.days[i]._id === index._id) {
+          $scope.days.splice(i,1);
           // console.log('index._id: ', index._id);
           break;
         }
       }
-      // console.log('New events array: ', $scope.events);
+      // console.log('New days array: ', $scope.days);
     };
 
     $scope.uiConfig = {
@@ -60,9 +70,9 @@ angular.module('frontendApp')
           left: 'title',
           right: 'today prev,next'
         },
-        dayClick: $scope.addEvent,
-        eventClick: $scope.removeEvent
+        dayClick: $scope.addDay,
+        eventClick: $scope.removeDay
       }
     };
 
-  });
+  }]);

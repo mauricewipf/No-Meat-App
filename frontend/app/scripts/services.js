@@ -1,7 +1,37 @@
 'use strict';
 
 angular.module('frontendApp')
-    .constant('baseURL', 'https://localhost:9000/')
+.constant('baseURL', 'http://localhost:3000/')
+
+.factory('calendarFactory', ['$resource', 'baseURL', function($resource, baseURL) {
+
+  return $resource(baseURL + 'days/:id', null, {
+      'update': {
+          method: 'PUT'
+      },
+      'query': {
+          method: 'GET',
+          isArray: true,
+          transformResponse: function(data){
+              return angular.fromJson(data);
+          }
+      }
+  });
+
+}])
+
+.factory('daysFactory', ['$resource', 'baseURL', function($resource, baseURL) {
+
+  return $resource(baseURL + 'calendar/:id/days/:dayId', null, {
+      id: '@Id',
+      daysId: '@DaysId'
+      }, {
+          'update': {
+              method: 'PUT'
+          }
+      });
+
+}])
 
 .factory('$localStorage', ['$window', function($window) {
     return {

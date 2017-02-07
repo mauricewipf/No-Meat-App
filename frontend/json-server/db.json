@@ -1,0 +1,12 @@
+{
+  "calendars": [
+    {"id": 2000, "title": "NoMeatCalendar", "created": "2017-02-02"},
+    {"id": 2001, "title": "FitnessCalendar", "created": "2017-01-12"}
+  ],
+  "days": [
+    {"id":1000, "title": "NoMeatEaten","start": "2017-02-03", "allDay":true},
+    {"id":1001, "title": "All Day Event","start": "2017-02-13", "allDay":true},
+    {"id":1002, "title": "Long Event","start": "2017-01-13", "allDay": true},
+    {"id":1003, "title": "Repeating Event","start": "2017-02-05","allDay": true}
+  ]
+}

@@ -26,10 +26,11 @@ angular.module('frontendApp')
     //   {id:1003, title: 'Repeating Event',start: new Date(y, m, d - 3, 16, 0),allDay: false}
     // ];
 
-    calendarFactory.query(
+    $scope.days = calendarFactory.query()
+        .$promise.then(
         function(response) {
-            console.log(JSON.parse(angular.toJson(response)));
             $scope.days = JSON.parse(angular.toJson(response));
+            console.log($scope.days);
         },
         function(response) {
             console.log('Error: ', response);
@@ -37,7 +38,7 @@ angular.module('frontendApp')
         }
     );
 
-    $scope.eventSources = [$scope.days];
+    // $scope.eventSources = [$scope.days];
 
     /* add day*/
     $scope.addDay = function(date) {

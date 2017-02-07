@@ -11,10 +11,7 @@ angular.module('frontendApp')
       },
       'query': {
           method: 'GET',
-          isArray: true,
-          transformResponse: function(data){
-              return angular.fromJson(data);
-          }
+          isArray: true
       }
   });
 

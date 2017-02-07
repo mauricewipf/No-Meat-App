@@ -17,25 +17,40 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.calendar',
+    'ui.router',
+    'ngDialog'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/profile', {
-        templateUrl: 'views/profile.html',
-        controller: 'ProfileCtrl',
-        controllerAs: 'profile'
-      })
-      .when('/login', {
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl',
-        controllerAs: 'login'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+  .config(function($stateProvider, $urlRouterProvider) {
+    $stateProvider
+
+    // route for the home page
+    .state('app', {
+        url: '/',
+        views: {
+            'header': {
+                templateUrl: 'views/header.html',
+                controller: 'HeaderCtrl'
+            },
+            'content': {
+                templateUrl: 'views/main.html',
+                controller: 'MainCtrl'
+            },
+            'footer': {
+                templateUrl: 'views/footer.html',
+            }
+        }
+    })
+
+    // route for the about page
+    .state('app.about', {
+        url: 'about',
+        views: {
+            'content@': {
+                templateUrl: 'views/about.html'
+            }
+        }
+    });
+
+    $urlRouterProvider.otherwise('/');
+
   });

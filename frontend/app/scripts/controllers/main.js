@@ -65,11 +65,4 @@ angular.module('frontendApp')
       }
     };
 
-  })
-  .controller('ProfileCtrl', function () {
-
-  })
-  .controller('LoginCtrl', function () {
-
-  })
-;
+  });

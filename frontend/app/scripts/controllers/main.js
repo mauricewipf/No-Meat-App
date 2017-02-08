@@ -15,30 +15,22 @@ angular.module('frontendApp')
       'Karma'
     ];
 
-    // var date = new Date();
-    // var d = date.getDate();
-    // var m = date.getMonth();
-    // var y = date.getFullYear();
-    // $scope.days = [
-    //   {id:1000, title: 'NoMeatEaten',start: '2017-02-22', allDay:true},
-    //   {id:1001, title: 'All Day Event',start: new Date(y, m, 1)},
-    //   {id:1002, title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
-    //   {id:1003, title: 'Repeating Event',start: new Date(y, m, d - 3, 16, 0),allDay: false}
-    // ];
+    // https://stackoverflow.com/questions/38989253/how-to-display-the-events-fetched-from-database-on-the-full-calendar-angular-js?rq=1
 
-    $scope.days = calendarFactory.query()
-        .$promise.then(
-        function(response) {
-            $scope.days = JSON.parse(angular.toJson(response));
-            console.log($scope.days);
-        },
-        function(response) {
-            console.log('Error: ', response);
-            $scope.message = 'Error: ' + response.status + ' ' + response.statusText;
-        }
-    );
-
-    // $scope.eventSources = [$scope.days];
+    var days = [];
+    $scope.days = [function(start, end, timezone, callback) {
+        calendarFactory.query()
+          .$promise.then(function(data) {
+              angular.forEach(data,function(day){
+                  days.push({
+                      id: day.id,
+                      title: day.title,
+                      start: day.start
+                  });
+              });
+              callback(days);
+          });
+    }];
 
     /* add day*/
     $scope.addDay = function(date) {

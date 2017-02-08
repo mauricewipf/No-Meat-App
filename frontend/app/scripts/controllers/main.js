@@ -58,7 +58,7 @@ angular.module('frontendApp')
     $scope.uiConfig = {
       calendar:{
         height: 450,
-        editable: true,
+        editable: false,
         header:{
           left: 'title',
           right: 'today prev,next'

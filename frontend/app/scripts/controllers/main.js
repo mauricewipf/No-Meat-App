@@ -8,18 +8,26 @@
  * Controller of the frontendApp
  */
 angular.module('frontendApp')
-  .controller('MainCtrl', ['$scope', 'calendarFactory', function ($scope, calendarFactory) {
+  .controller('MainCtrl', ['$scope', 'calendarFactory', '$rootScope', 'AuthFactory', function ($scope, calendarFactory, $rootScope, AuthFactory) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
 
-    // https://stackoverflow.com/questions/38989253/how-to-display-the-events-fetched-from-database-on-the-full-calendar-angular-js?rq=1
-
     var days = [];
-    $scope.days = [function(start, end, timezone, callback) {
-        calendarFactory.query()
+
+    if (AuthFactory.isAuthenticated()) {
+      $scope.username = AuthFactory.getUsername();
+      $scope.userId = AuthFactory.getUserId();
+      // $scope.userCalendars = AuthFactory.getCalendars();
+
+      // https://stackoverflow.com/questions/38989253/how-to-display-the-events-fetched-from-database-on-the-full-calendar-angular-js?rq=1
+      $scope.days = [function(start, end, timezone, callback) {
+          calendarFactory.query({
+            // userId: $scope.userId,
+            // userCalendars : $scope.userCalendars[0]
+          })
           .$promise.then(function(data) {
               angular.forEach(data,function(day){
                   days.push({
@@ -30,7 +38,12 @@ angular.module('frontendApp')
               });
               callback(days);
           });
-    }];
+      }];
+    }
+
+    $rootScope.$on('login:Successful', function() {
+
+    });
 
     /* add day*/
     $scope.addDay = function(date) {

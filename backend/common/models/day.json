@@ -9,6 +9,14 @@
     "start": {
       "type": "date",
       "required": true
+    },
+    "allDay": {
+      "type": "boolean",
+      "default": true
+    },
+    "userId": {
+      "type": "string",
+      "required": true
     }
   },
   "validations": [],

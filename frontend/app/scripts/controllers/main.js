@@ -24,8 +24,9 @@ angular.module('frontendApp')
 
       // https://stackoverflow.com/questions/38989253/how-to-display-the-events-fetched-from-database-on-the-full-calendar-angular-js?rq=1
       $scope.days = [function(start, end, timezone, callback) {
+          //TODO load only days of authenticated user
           calendarFactory.query({
-            // userId: $scope.userId,
+            userId: $scope.userId
             // userCalendars : $scope.userCalendars[0]
           })
           .$promise.then(function(data) {
@@ -42,7 +43,7 @@ angular.module('frontendApp')
     }
 
     $rootScope.$on('login:Successful', function() {
-
+      //TODO Load days after login
     });
 
     /* add day*/

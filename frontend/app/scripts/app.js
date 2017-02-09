@@ -49,7 +49,20 @@ angular
                 templateUrl: 'views/about.html'
             }
         }
-    });
+    })
+
+    // route for the about page
+    .state('app.profile', {
+        url: 'profile',
+        views: {
+            'content@': {
+                templateUrl: 'views/profile.html',
+                controller: 'ProfileCtrl'
+            }
+        }
+    })
+
+    ;
 
     $urlRouterProvider.otherwise('/');
 

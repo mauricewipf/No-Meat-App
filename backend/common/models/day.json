@@ -6,7 +6,7 @@
     "validateUpsert": true
   },
   "properties": {
-    "date": {
+    "start": {
       "type": "date",
       "required": true
     }
@@ -21,15 +21,9 @@
       "permission": "DENY"
     },
     {
-      "accessType": "READ",
-      "principalType": "ROLE",
-      "principalId": "$authenticated",
-      "permission": "ALLOW"
-    },
-    {
       "accessType": "*",
       "principalType": "ROLE",
-      "principalId": "$owner",
+      "principalId": "$authenticated",
       "permission": "ALLOW"
     }
   ],

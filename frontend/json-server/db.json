@@ -1,4 +1,5 @@
 {
+  "users": [],
   "calendars": [
     {"id": 2000, "title": "NoMeatCalendar", "created": "2017-02-02"},
     {"id": 2001, "title": "FitnessCalendar", "created": "2017-01-12"}

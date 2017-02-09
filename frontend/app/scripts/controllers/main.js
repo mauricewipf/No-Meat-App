@@ -24,21 +24,26 @@ angular.module('frontendApp')
 
       // https://stackoverflow.com/questions/38989253/how-to-display-the-events-fetched-from-database-on-the-full-calendar-angular-js?rq=1
       $scope.days = [function(start, end, timezone, callback) {
-          //TODO load only days of authenticated user
-          calendarFactory.query({
+          //TODO load only days with a spcific userId
+          calendarFactory.get({
             userId: $scope.userId
             // userCalendars : $scope.userCalendars[0]
           })
-          .$promise.then(function(data) {
-              angular.forEach(data,function(day){
-                  days.push({
-                      id: day.id,
-                      title: day.title,
-                      start: day.start
+          .$promise.then(
+              function(data) {
+                  angular.forEach(data,function(day){
+                      days.push({
+                          id: day.id,
+                          title: day.title,
+                          start: day.start
+                      });
                   });
-              });
-              callback(days);
-          });
+                  callback(days);
+              },
+              function (response) {
+                  console.log('error: ', response);
+              }
+          );
       }];
     }
 
@@ -48,6 +53,7 @@ angular.module('frontendApp')
 
     /* add day*/
     $scope.addDay = function(date) {
+      //TODO update addDay function
       $scope.days.push({
         title: 'NoMeatEaten',
         start: date._d,
@@ -59,6 +65,7 @@ angular.module('frontendApp')
 
     /* remove day */
     $scope.removeDay = function(index) {
+      //TODO update removeDay function
       for (var i=0; i < $scope.days.length; i++) {
         if ($scope.days[i]._id === index._id) {
           $scope.days.splice(i,1);

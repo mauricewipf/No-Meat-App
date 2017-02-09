@@ -9,7 +9,7 @@ angular.module('frontendApp')
       'update': {
           method: 'PUT'
       },
-      'query': {
+      'get': {
           method: 'GET',
           isArray: true
       }

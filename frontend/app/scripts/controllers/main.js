@@ -88,7 +88,7 @@ angular.module('frontendApp')
             }
         }
 
-        dayFactory.delete(index._id);
+        dayFactory.delete(index);
         fullcalendar.fullCalendar('removeEvents',index._id);
         console.log('Removed day ', index);
     };

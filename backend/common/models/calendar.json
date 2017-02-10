@@ -19,13 +19,6 @@
     }
   },
   "validations": [],
-  "relations": {
-    "days": {
-      "type": "hasMany",
-      "model": "Day",
-      "foreignKey": ""
-    }
-  },
   "acls": [
     {
       "accessType": "*",

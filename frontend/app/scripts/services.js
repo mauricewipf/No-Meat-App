@@ -1,32 +1,23 @@
 'use strict';
 
 angular.module('frontendApp')
-.constant('baseURL', 'http://localhost:3000/')
+.constant('baseURL', 'http://localhost:3000/api/')
 
-.factory('calendarFactory', ['$resource', 'baseURL', function($resource, baseURL) {
+.factory('dayFactory', ['$resource', 'baseURL', function($resource, baseURL) {
 
-  return $resource(baseURL + 'days/:id', null, {
+  return $resource(baseURL + 'customers/:id/days/:daysId', null, {
+          id: '@Id',
+          daysId: '@daysId'
+      },
+      {
       'update': {
           method: 'PUT'
       },
-      'get': {
+      'query': {
           method: 'GET',
           isArray: true
       }
   });
-
-}])
-
-.factory('daysFactory', ['$resource', 'baseURL', function($resource, baseURL) {
-
-  return $resource(baseURL + 'calendar/:id/days/:dayId', null, {
-      id: '@Id',
-      daysId: '@DaysId'
-      }, {
-          'update': {
-              method: 'PUT'
-          }
-      });
 
 }])
 
@@ -99,7 +90,7 @@ angular.module('frontendApp')
 
     authFac.login = function(loginData) {
 
-        $resource(baseURL + 'users/login')
+        $resource(baseURL + 'customers/login')
             .save(loginData,
                 function(response) {
                     storeUserCredentials({
@@ -131,13 +122,13 @@ angular.module('frontendApp')
     };
 
     authFac.logout = function() {
-        $resource(baseURL + 'users/logout').get(function() {});
+        $resource(baseURL + 'customers/logout').get(function() {});
         destroyUserCredentials();
     };
 
     authFac.register = function(registerData) {
 
-        $resource(baseURL + 'users/register')
+        $resource(baseURL + 'customers/register')
             .save(registerData,
                 function() {
                     authFac.login({

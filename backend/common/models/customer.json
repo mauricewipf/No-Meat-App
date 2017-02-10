@@ -12,13 +12,19 @@
   "properties": {},
   "validations": [],
   "relations": {
-    "calendars": {
+    "days": {
       "type": "hasMany",
-      "model": "Calendar",
+      "model": "Day",
       "foreignKey": ""
     }
   },
   "acls": [
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
     {
       "accessType": "*",
       "principalType": "ROLE",

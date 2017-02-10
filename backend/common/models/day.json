@@ -13,10 +13,6 @@
     "allDay": {
       "type": "boolean",
       "default": true
-    },
-    "userId": {
-      "type": "string",
-      "required": true
     }
   },
   "validations": [],

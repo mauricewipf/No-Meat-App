@@ -17,50 +17,55 @@ angular.module('frontendApp')
 
     var days = [];
 
-    if (AuthFactory.isAuthenticated()) {
-        $scope.username = AuthFactory.getUsername();
-        $scope.userId = AuthFactory.getUserId();
-        // $scope.userCalendars = AuthFactory.getCalendars();
-
-        // https://stackoverflow.com/questions/38989253/how-to-display-the-events-fetched-from-database-on-the-full-calendar-angular-js?rq=1
-        $scope.days = [function(start, end, timezone, callback) {
-            //TODO load only days with a spcific userId
-            dayFactory.query({
-                id: $scope.userId
-                // userCalendars : $scope.userCalendars[0]
-            })
-            .$promise.then(
-                function(data) {
-                    angular.forEach(data,function(day){
-                        days.push({
-                            id: day.id,
-                            title: day.title,
-                            start: day.start
+    function getUserDays() {
+        if (AuthFactory.isAuthenticated()) {
+            $scope.username = AuthFactory.getUsername();
+            $scope.userId = AuthFactory.getUserId();
+            // https://goo.gl/IYCGhe
+            $scope.days = [function(start, end, timezone, callback) {
+                dayFactory.query({
+                    id: $scope.userId
+                    // userCalendars : $scope.userCalendars[0]
+                })
+                .$promise.then(
+                    function(data) {
+                        angular.forEach(data,function(day){
+                            days.push({
+                                id: day.id,
+                                title: day.title,
+                                start: day.start
+                            });
                         });
-                    });
-                    callback(days);
-                },
-                function (response) {
-                    console.log('error: ', response);
-                }
-            );
-        }];
+                        callback(days);
+                    },
+                    function (response) {
+                        console.log('error: ', response);
+                    }
+                );
+            }];
+        }
+
     }
+    getUserDays();
+
 
     $rootScope.$on('login:Successful', function() {
-        //TODO Load days after login
+        //TODO execute when login successful
+        getUserDays();
     });
 
     /* add day*/
     $scope.addDay = function(date) {
         //TODO update addDay function
-        $scope.days.push({
-            title: 'NoMeatEaten',
-            start: date._d,
-            allDay:true
+        for (var i = 0; i < days.length; i++) {
+            if (date._d.getTime() === (new Date(days[i].start).getTime())) {
+                return console.log('Date already exists');
+            }
+        }
+        days.push({
+            start: date._d
         });
-        // console.log(date._d + ' added');
-        console.log($scope.days);
+        console.log(days);
     };
 
     /* remove day */

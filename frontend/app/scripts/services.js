@@ -49,13 +49,6 @@ angular.module('frontendApp')
     var username = '';
     var userId;
     var userCalendars = [];
-    /*TODO When I wsant to display a specific calendar of a user,
-      I need to know if this calendar belongs to this user.
-      But I need to store the calId in the user to know from the user's view
-      which calendars he can access.
-      Or I get only calendars with the userId.
-      It is easier in the first step to just provide one calendar.
-    */
     var authToken;
 
     function loadUserCredentials() {

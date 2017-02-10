@@ -3,7 +3,7 @@
 angular.module('frontendApp')
 .constant('baseURL', 'http://localhost:3000/api/')
 
-.factory('dayFactory', ['$resource', 'baseURL', function($resource, baseURL) {
+.factory('customerFactory', ['$resource', 'baseURL', function($resource, baseURL) {
 
     return $resource(baseURL + 'customers/:id/days/:daysId', null, {
             id: '@Id',
@@ -16,6 +16,26 @@ angular.module('frontendApp')
         'query': {
             method: 'GET',
             isArray: true
+        }
+    });
+
+}])
+
+.factory('dayFactory', ['$resource', 'baseURL', function($resource, baseURL) {
+
+    return $resource(baseURL + 'days/:id', null, {
+            id: '@Id'
+        },
+        {
+        'update': {
+            method: 'PUT'
+        },
+        'query': {
+            method: 'GET',
+            isArray: true
+        },
+        'delete': {
+            method: 'DELETE'
         }
     });
 

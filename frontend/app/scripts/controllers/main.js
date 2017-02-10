@@ -8,7 +8,7 @@
  * Controller of the frontendApp
  */
 angular.module('frontendApp')
-    .controller('MainCtrl', ['$scope', 'dayFactory', '$rootScope', 'AuthFactory', function ($scope, dayFactory, $rootScope, AuthFactory) {
+    .controller('MainCtrl', ['$scope', 'customerFactory', 'dayFactory', '$rootScope', 'AuthFactory', function ($scope, customerFactory, dayFactory, $rootScope, AuthFactory) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -21,10 +21,10 @@ angular.module('frontendApp')
     function getUserDays() {
         if (AuthFactory.isAuthenticated()) {
             $scope.username = AuthFactory.getUsername();
-            $scope.userId = AuthFactory.getUserId();
+            $scope.customerId = AuthFactory.getUserId();
             // https://goo.gl/IYCGhe
-                dayFactory.query({
-                    id: $scope.userId
+                customerFactory.query({
+                    id: $scope.customerId
                 })
                 .$promise.then(
                     function(data) {
@@ -56,17 +56,22 @@ angular.module('frontendApp')
 
     /* add day*/
     $scope.addDay = function(date) {
-        //TODO save newDay in MongoDB
 
         //TODO read day from fullcalendar to get rid of car days
-
         for (var i = 0; i < days.length; i++) {
             if (date._d.getTime() === (new Date(days[i].start).getTime())) {
                 return console.log('Date already exists');
             }
         }
 
-        var newDay = {title: '', start: date._d};
+        //TODO save newDay in MongoDB
+        var newDay = {
+            start: date._d,
+            allDay: true,
+            customerId: $scope.customerId
+        };
+
+        dayFactory.save(newDay);
         days.push(newDay);
         fullcalendar.fullCalendar('renderEvent', newDay, true);
         console.log('Added day ', newDay);
@@ -83,6 +88,7 @@ angular.module('frontendApp')
             }
         }
 
+        dayFactory.delete(index._id);
         fullcalendar.fullCalendar('removeEvents',index._id);
         console.log('Removed day ', index);
     };

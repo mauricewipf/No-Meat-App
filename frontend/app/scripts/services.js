@@ -5,19 +5,19 @@ angular.module('frontendApp')
 
 .factory('dayFactory', ['$resource', 'baseURL', function($resource, baseURL) {
 
-  return $resource(baseURL + 'customers/:id/days/:daysId', null, {
-          id: '@Id',
-          daysId: '@daysId'
-      },
-      {
-      'update': {
-          method: 'PUT'
-      },
-      'query': {
-          method: 'GET',
-          isArray: true
-      }
-  });
+    return $resource(baseURL + 'customers/:id/days/:daysId', null, {
+            id: '@Id',
+            daysId: '@daysId'
+        },
+        {
+        'update': {
+            method: 'PUT'
+        },
+        'query': {
+            method: 'GET',
+            isArray: true
+        }
+    });
 
 }])
 

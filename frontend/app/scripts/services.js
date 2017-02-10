@@ -115,6 +115,7 @@ angular.module('frontendApp')
     };
 
     authFac.logout = function() {
+        //TODO 'customers/logout' is not found 404
         $resource(baseURL + 'customers/logout').get(function() {});
         destroyUserCredentials();
     };

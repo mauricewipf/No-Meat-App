@@ -15,6 +15,7 @@ angular.module('frontendApp')
       'Karma'
     ];
 
+    var fullcalendar = angular.element(document.getElementById('uiCalendar'));
     var days = [];
 
     function getUserDays() {
@@ -22,27 +23,21 @@ angular.module('frontendApp')
             $scope.username = AuthFactory.getUsername();
             $scope.userId = AuthFactory.getUserId();
             // https://goo.gl/IYCGhe
-            $scope.days = [function(start, end, timezone, callback) {
                 dayFactory.query({
                     id: $scope.userId
-                    // userCalendars : $scope.userCalendars[0]
                 })
                 .$promise.then(
                     function(data) {
-                        angular.forEach(data,function(day){
-                            days.push({
-                                id: day.id,
-                                title: day.title,
-                                start: day.start
-                            });
+                        angular.forEach(data,function(newDay){
+                            days.push(newDay);
+                            fullcalendar.fullCalendar('renderEvent',newDay);
                         });
-                        callback(days);
                     },
                     function (response) {
                         console.log('error: ', response);
                     }
                 );
-            }];
+
         }
 
     }
@@ -54,34 +49,45 @@ angular.module('frontendApp')
         getUserDays();
     });
 
+    $rootScope.$on('logout:Successful', function() {
+        fullcalendar.fullCalendar('removeEvents');
+        console.log('Logout successful');
+    });
+
     /* add day*/
     $scope.addDay = function(date) {
-        //TODO update addDay function
+        //TODO save newDay in MongoDB
+
+        //TODO read day from fullcalendar to get rid of car days
+
         for (var i = 0; i < days.length; i++) {
             if (date._d.getTime() === (new Date(days[i].start).getTime())) {
                 return console.log('Date already exists');
             }
         }
-        days.push({
-            start: date._d
-        });
-        console.log(days);
+
+        var newDay = {title: '', start: date._d};
+        days.push(newDay);
+        fullcalendar.fullCalendar('renderEvent', newDay, true);
+        console.log('Added day ', newDay);
     };
 
     /* remove day */
     $scope.removeDay = function(index) {
-        //TODO update removeDay function
-        for (var i=0; i < $scope.days.length; i++) {
-            if ($scope.days[i]._id === index._id) {
-                $scope.days.splice(i,1);
-                // console.log('index._id: ', index._id);
+        //TODO remove removeDay from MongoDB
+
+        for (var i=0; i < days.length; i++) {
+            if ((new Date(days[i].start).getTime()) === index.start._d.getTime()) {
+                days.splice(i,1);
                 break;
             }
         }
-        // console.log('New days array: ', $scope.days);
+
+        fullcalendar.fullCalendar('removeEvents',index._id);
+        console.log('Removed day ', index);
     };
 
-    $scope.uiConfig = {
+    $scope.uiCalendarConfig = {
         calendar:{
             height: 450,
             editable: false,

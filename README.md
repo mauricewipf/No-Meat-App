@@ -33,8 +33,10 @@
 * [ ] Landing page
 * [ ] After logout forward to landing page
 * [ ] Show positive days on calendar after login w/o site reload
+* [ ] Restrict model ACLs
 * [ ] Counter for positive days per month
-* [ ] Mobile app with Ionic + Corodva
+* [ ] Hybrid mobile app with Ionic + Cordova
 * [ ] 'Change Password'
 * [ ] 'Delete Account'
+* [ ] Login with email address
 * [ ] Add more calendars to track different habits

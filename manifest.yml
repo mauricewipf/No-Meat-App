@@ -1,0 +1,11 @@
+applications:
+- path: .
+  memory: 256M
+  instances: 1
+  domain: mybluemix.net
+  name: No Meat
+  host: nomeat
+  disk_quota: 256M
+  command: 
+  services:
+  - no-meat-db

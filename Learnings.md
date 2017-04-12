@@ -16,5 +16,5 @@
 
 ## Login
 - http://localhost:3000/explorer/#!/Customer/Customer_login
-- Credentials: {"username": "admin", "password":"pwd"}
+- Credentials: {"username": "Admin", "password":"abcdef"}
 - Then copy "id" from the response body (something like `ey5BoEyPKpiRQHSiv4yyEoXdRC8HyAtI2tJpF1qogaVRxYTGd6O4aBFvtKFOBZRH`) and in the input field in the green header.

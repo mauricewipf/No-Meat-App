@@ -23,7 +23,7 @@
 
 1. `cd frontend && bower install && npm install`
 2. `cd backend && npm install`
-3. `cd mongo && mongod --dbpath=data`
+3. `cd mongodb && mongod --dbpath=data`
 4. `cd backend && node .`
 5. `cd frontend && grunt serve`
 

@@ -57,24 +57,31 @@ angular.module('frontendApp')
     /* add day*/
     $scope.addDay = function(date) {
 
+        var dateExists = false;
+
         //TODO read day from fullcalendar to get rid of car days
         for (var i = 0; i < days.length; i++) {
             if (date._d.getTime() === (new Date(days[i].start).getTime())) {
-                return console.log('Date already exists');
+                console.log('Date already exists');
+                dateExists = true;
+                break;
             }
         }
 
-        //TODO save newDay in MongoDB
-        var newDay = {
-            start: date._d,
-            allDay: true,
-            customerId: $scope.customerId
-        };
+        if (dateExists === false && AuthFactory.isAuthenticated() === true) {
+            var newDay = {
+                start: date._d,
+                allDay: true,
+                customerId: $scope.customerId
+            };
 
-        dayFactory.save(newDay);
-        days.push(newDay);
-        fullcalendar.fullCalendar('renderEvent', newDay, true);
-        console.log('Added day ', newDay);
+            dayFactory.save(newDay);
+            days.push(newDay);
+            fullcalendar.fullCalendar('renderEvent', newDay, true);
+            console.log('Added day ', newDay);
+
+        }
+
     };
 
     /* remove day */

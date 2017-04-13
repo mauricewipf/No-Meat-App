@@ -21,11 +21,11 @@
 
 ## Run locally
 
-1. `cd frontend && bower install && npm install`
-2. `cd backend && npm install`
+1. `npm install`
+2. `cd client && bower install && npm install`
 3. `cd mongodb && mongod --dbpath=data`
-4. `cd backend && node .`
-5. `cd frontend && grunt serve` (for preview) or `grunt` (for building)
+4. `node .`
+5. `cd client && grunt serve` (for preview) or `grunt` (for building)
 
 ### Frontend Testing
 

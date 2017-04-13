@@ -33,14 +33,14 @@ Running `grunt test` will run the unit tests with karma.
 
 ## Roadmap
 
-* [ ] Deploy on Heroku or IBM Bluemix
-* [ ] Landing page
-* [ ] After logout forward to landing page
-* [ ] Show positive days on calendar after login w/o site reload
-* [ ] Restrict model ACLs
-* [ ] Counter for positive days per month
-* [ ] Hybrid mobile app with Ionic + Cordova
-* [ ] 'Change Password'
-* [ ] 'Delete Account'
-* [ ] Login with email address
-* [ ] Add more calendars to track different habits
+- [x] Deploy on ~~Heroku or~~ IBM Bluemix
+- [ ] Landing page
+- [ ] After logout forward to landing page
+- [x] Show positive days on calendar after login w/o site reload
+- [ ] Restrict model ACLs
+- [ ] Counter for positive days per month
+- [ ] Hybrid mobile app with Ionic + Cordova
+- [ ] 'Change Password'
+- [ ] 'Delete Account'
+- [ ] Login with email address
+- [ ] Add more calendars to track different habits

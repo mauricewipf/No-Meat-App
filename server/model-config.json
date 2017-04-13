@@ -22,27 +22,27 @@
     "public": false
   },
   "ACL": {
-    "dataSource": "MongoDB",
+    "dataSource": "Cloudant",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "MongoDB",
+    "dataSource": "Cloudant",
     "public": false
   },
   "Role": {
-    "dataSource": "MongoDB",
+    "dataSource": "Cloudant",
     "public": false
   },
   "Calendar": {
-    "dataSource": "MongoDB",
+    "dataSource": "Cloudant",
     "public": true
   },
   "Customer": {
-    "dataSource": "MongoDB",
+    "dataSource": "Cloudant",
     "public": true
   },
   "Day": {
-    "dataSource": "MongoDB",
+    "dataSource": "Cloudant",
     "public": true
   }
 }

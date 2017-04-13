@@ -3,14 +3,14 @@
     "name": "db",
     "connector": "memory"
   },
-  "MongoDB": {
-    "host": "localhost",
-    "port": 27017,
-    "url": "",
-    "database": "NoMeat",
-    "password": "",
-    "name": "MongoDB",
-    "user": "",
-    "connector": "mongodb"
+  "Cloudant": {
+      "username": "7cfd765b-90df-4faa-bd97-caab7bf45a42-bluemix",
+      "password": "ed44b41cc751cebca51d00591465dc4eb880257092b270b5461f67bbe61a4a6b",
+      "host": "7cfd765b-90df-4faa-bd97-caab7bf45a42-bluemix.cloudant.com",
+      "database": "no-meat-db",
+      "name": "Cloudant",
+      "port": 443,
+      "url": "https://7cfd765b-90df-4faa-bd97-caab7bf45a42-bluemix:ed44b41cc751cebca51d00591465dc4eb880257092b270b5461f67bbe61a4a6b@7cfd765b-90df-4faa-bd97-caab7bf45a42-bluemix.cloudant.com",
+      "connector": "cloudant"
   }
 }

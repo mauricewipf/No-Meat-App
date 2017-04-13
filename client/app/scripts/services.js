@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('frontendApp')
-.constant('baseURL', 'http://localhost:3000/api/')
+.constant('baseURL', 'http://0.0.0.0:3000/api/')
 
 .factory('customerFactory', ['$resource', 'baseURL', function($resource, baseURL) {
 

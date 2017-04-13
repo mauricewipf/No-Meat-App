@@ -6,6 +6,6 @@ applications:
   name: No Meat
   host: nomeat
   disk_quota: 256M
-  command: 
   services:
   - no-meat-db
+  - availability-monitoring-auto

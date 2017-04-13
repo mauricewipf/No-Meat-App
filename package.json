@@ -1,5 +1,5 @@
 {
-  "name": "loopback-server",
+  "name": "No-Meat-App",
   "version": "1.0.0",
   "main": "server/server.js",
   "scripts": {
@@ -33,6 +33,11 @@
     "type": "",
     "url": "https://github.com/mauricewipf/No-Meat-App"
   },
-  "license": "UNLICENSED",
-  "description": "loopback-server"
+  "author": {
+      "name" : "Maurice Wipf",
+      "email" : "sayhi@mauwi.me",
+      "url" : "http://mauwi.me"
+  },
+  "license": "MIT",
+  "description": "Full-Fledged Web Application. Track days when you don't eat meat."
 }

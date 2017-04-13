@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('frontendApp')
-.constant('baseURL', 'http://0.0.0.0:3000/api/')
+// .constant('baseURL', 'http://0.0.0.0:3000/api/')
+.constant('baseURL', 'https://7cfd765b-90df-4faa-bd97-caab7bf45a42-bluemix:ed44b41cc751cebca51d00591465dc4eb880257092b270b5461f67bbe61a4a6b@7cfd765b-90df-4faa-bd97-caab7bf45a42-bluemix.cloudant.com/no-meat-db/')
 
 .factory('customerFactory', ['$resource', 'baseURL', function($resource, baseURL) {
 

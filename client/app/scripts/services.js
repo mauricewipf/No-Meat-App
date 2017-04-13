@@ -142,7 +142,7 @@ angular.module('frontendApp')
 
     authFac.register = function(registerData) {
 
-        $resource(baseURL + 'customers/register')
+        $resource(baseURL + 'customers')
             .save(registerData,
                 function() {
                     authFac.login({

@@ -23,3 +23,6 @@ mongodb
 /client/.tmp
 /client/.sass-cache
 /client/bower_components
+/server/private/certificate.pem
+/server/private/certrequest.csr
+/server/private/privatekey.pem

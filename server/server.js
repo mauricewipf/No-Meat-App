@@ -2,23 +2,28 @@
 
 var loopback = require('loopback');
 var boot = require('loopback-boot');
+// var https = require('https');
+// var sslConfig = require('./ssl-config');
 
 var app = module.exports = loopback();
 
-app.use(function(req, res, next) {
-  //headers that enable corse
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  next();
-});
+// var options = {
+//   key: sslConfig.privateKey,
+//   cert: sslConfig.certificate
+// };
 
 app.start = function() {
+
+  app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+  });
 
   // start the web server
   return app.listen(function() {
     app.emit('started');
-    var baseUrl = app.get('url').replace(/\/$/, '');
+    var baseUrl = app.get('url').replace(/\/$/, ''); // replaces slashes at the end with ''
     console.log('Web server listening at: %s', baseUrl);
     if (app.get('loopback-component-explorer')) {
       var explorerPath = app.get('loopback-component-explorer').mountPath;

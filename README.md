@@ -19,6 +19,17 @@
 - NodeJS
 - MongoDB
 
+## Set up for using SSL certificate
+
+```
+$ cd server/private
+$ openssl genrsa -out privatekey.pem 1024
+$ openssl req -new -key privatekey.pem -out certrequest.csr
+$ openssl x509 -req -in certrequest.csr -signkey privatekey.pem -out certificate.pem
+```
+
+- More about this: https://loopback.io/doc/en/lb2/Preparing-for-deployment.html#generate-your-own-ssl-certificate
+
 ## Run locally
 
 1. `npm install`
@@ -30,6 +41,13 @@
 ### Frontend Testing
 
 Running `grunt test` will run the unit tests with karma.
+
+## Deployment
+
+- Deployed on [IBM Bluemix Cloud Foundry](https://www.ibm.com/cloud-computing/bluemix/)
+- Cloud Database: [IBM Cloudant](https://cloudant.com/)
+- `cd client && grunt build`
+- `cf push "No Meat"`
 
 ## Roadmap
 

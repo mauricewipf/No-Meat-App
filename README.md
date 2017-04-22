@@ -1,6 +1,8 @@
 # Capstone Project of Coursera's Full Stack Webdevelopment Course
 [https://www.coursera.org/specializations/full-stack](https://www.coursera.org/specializations/full-stack)
 
+![Screenshot No Meat App](Screenshot.png)
+
 ## Stack Overview
 
 ### Frontend

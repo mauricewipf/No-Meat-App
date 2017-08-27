@@ -135,8 +135,7 @@ angular.module('frontendApp')
     };
 
     authFac.logout = function() {
-        //TODO 'customers/logout' is not found 404
-        $resource(baseURL + 'customers/logout').get(function() {});
+        $resource(baseURL + 'customers/logout').save(function() {});
         destroyUserCredentials();
     };
 
@@ -147,11 +146,13 @@ angular.module('frontendApp')
                 function() {
                     authFac.login({
                         username: registerData.username,
+                        email: registerData.email,
                         password: registerData.password
                     });
                     if (registerData.rememberMe) {
                         $localStorage.storeObject('userinfo', {
                             username: registerData.username,
+                            email: registerData.email,
                             password: registerData.password
                         });
                     }

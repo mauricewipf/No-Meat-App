@@ -49,7 +49,8 @@ Running `grunt test` will run the unit tests with karma.
 - Deployed on [IBM Bluemix Cloud Foundry](https://www.ibm.com/cloud-computing/bluemix/)
 - Cloud Database: [IBM Cloudant](https://cloudant.com/)
 - `cd client && grunt build`
-- `cf push "No Meat"`
+- `bluemix login -u ACCOUNTEMAIL -o ORG -s SPACE`
+- `bluemix app push nomeat`
 
 ## Roadmap
 

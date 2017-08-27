@@ -7,5 +7,5 @@ applications:
   host: nomeat
   disk_quota: 2048M
   services:
-  - no-meat-db
+  - no-meat-db-cloudantNoSQLDB
   - availability-monitoring-auto

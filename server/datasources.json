@@ -4,13 +4,13 @@
     "connector": "memory"
   },
   "Cloudant": {
-      "username": "7cfd765b-90df-4faa-bd97-caab7bf45a42-bluemix",
-      "password": "ed44b41cc751cebca51d00591465dc4eb880257092b270b5461f67bbe61a4a6b",
-      "host": "7cfd765b-90df-4faa-bd97-caab7bf45a42-bluemix.cloudant.com",
+      "username": "6ff689e3-c0e5-4b35-881d-680fda06649f-bluemix",
+      "password": "72f1620ac52cf0ed09c22e89608b081593d5e82321f0a9cb8dda4284ad44ea06",
+      "host": "6ff689e3-c0e5-4b35-881d-680fda06649f-bluemix.cloudant.com",
       "database": "no-meat-db",
       "name": "Cloudant",
       "port": 443,
-      "url": "https://7cfd765b-90df-4faa-bd97-caab7bf45a42-bluemix:ed44b41cc751cebca51d00591465dc4eb880257092b270b5461f67bbe61a4a6b@7cfd765b-90df-4faa-bd97-caab7bf45a42-bluemix.cloudant.com",
+      "url": "https://6ff689e3-c0e5-4b35-881d-680fda06649f-bluemix:72f1620ac52cf0ed09c22e89608b081593d5e82321f0a9cb8dda4284ad44ea06@6ff689e3-c0e5-4b35-881d-680fda06649f-bluemix.cloudant.com",
       "connector": "cloudant"
   }
 }
